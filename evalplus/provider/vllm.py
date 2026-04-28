@@ -20,11 +20,12 @@ class VllmDecoder(DecoderBase):
         enable_prefix_caching=False,
         enable_chunked_prefill=False,
         gguf_file: str = None,
+        max_model_len: int = 2048,
         **kwargs
     ) -> None:
         super().__init__(name, **kwargs)
 
-        kwargs = {
+        llm_kwargs = {
             "tensor_parallel_size": tensor_parallel_size,
             "dtype": self.dtype,
             "trust_remote_code": self.trust_remote_code,
@@ -42,7 +43,7 @@ class VllmDecoder(DecoderBase):
             self.eos += extra_eos_for_direct_completion(dataset)
         else:
             self.eos += ["\n```\n"]
-        self.llm = LLM(model=name, max_model_len=2048, **kwargs)
+        self.llm = LLM(model=name, max_model_len=max_model_len, **llm_kwargs)
 
     def is_direct_completion(self) -> bool:
         return self.force_base_prompt or self.tokenizer.chat_template is None

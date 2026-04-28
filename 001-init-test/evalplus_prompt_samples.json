@@ -1,0 +1,102 @@
+[
+  {
+    "data_source": "evalplus/humaneval",
+    "task_id": "HumanEval/0",
+    "entry_point": "has_close_elements",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "Please provide a self-contained Python script that solves the following problem in a markdown code block:\n```\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "Below is a Python script with a self-contained function that solves the problem and passes corresponding tests:\n```python\n-[[]]-this-is-really-our-highest-priority-[[]]-\n```\n"
+      }
+    ],
+    "raw_task_prompt": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n",
+    "rendered_prompt_to_llm": "<|im_start|>user\nPlease provide a self-contained Python script that solves the following problem in a markdown code block:\n```\nfrom typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n```\n<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nBelow is a Python script with a self-contained function that solves the problem and passes corresponding tests:\n```python\n",
+    "ability": "code",
+    "reward_model": {
+      "ground_truth": "\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i + 1] - sorted_numbers[i] < threshold:\n            return True\n    return False\n\n",
+      "style": "code_pass_at_1"
+    },
+    "extra_info": {
+      "split": "test"
+    }
+  },
+  {
+    "data_source": "evalplus/humaneval",
+    "task_id": "HumanEval/1",
+    "entry_point": "separate_paren_groups",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "Please provide a self-contained Python script that solves the following problem in a markdown code block:\n```\nfrom typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "Below is a Python script with a self-contained function that solves the problem and passes corresponding tests:\n```python\n-[[]]-this-is-really-our-highest-priority-[[]]-\n```\n"
+      }
+    ],
+    "raw_task_prompt": "from typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+    "rendered_prompt_to_llm": "<|im_start|>user\nPlease provide a self-contained Python script that solves the following problem in a markdown code block:\n```\nfrom typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n```\n<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nBelow is a Python script with a self-contained function that solves the problem and passes corresponding tests:\n```python\n",
+    "ability": "code",
+    "reward_model": {
+      "ground_truth": "\n\n    cnt, group, results = 0, \"\", []\n    for ch in paren_string:\n        if ch == \"(\": cnt += 1\n        if ch == \")\": cnt -= 1\n        if ch != \" \": group += ch\n        if cnt == 0:\n            if group != \"\": results.append(group)\n            group = \"\"\n    return results\n\n",
+      "style": "code_pass_at_1"
+    },
+    "extra_info": {
+      "split": "test"
+    }
+  },
+  {
+    "data_source": "evalplus/mbpp",
+    "task_id": "Mbpp/2",
+    "entry_point": "similar_elements",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "Please provide a self-contained Python script that solves the following problem in a markdown code block:\n```\n\"\"\"\nWrite a function to find the shared elements from the given two lists.\nassert set(similar_elements((3, 4, 5, 6),(5, 7, 4, 10))) == set((4, 5))\n\"\"\"\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "Below is a Python script with a self-contained function that solves the problem and passes corresponding tests:\n```python\n-[[]]-this-is-really-our-highest-priority-[[]]-\n```\n"
+      }
+    ],
+    "raw_task_prompt": "\"\"\"\nWrite a function to find the shared elements from the given two lists.\nassert set(similar_elements((3, 4, 5, 6),(5, 7, 4, 10))) == set((4, 5))\n\"\"\"\n",
+    "rendered_prompt_to_llm": "<|im_start|>user\nPlease provide a self-contained Python script that solves the following problem in a markdown code block:\n```\n\"\"\"\nWrite a function to find the shared elements from the given two lists.\nassert set(similar_elements((3, 4, 5, 6),(5, 7, 4, 10))) == set((4, 5))\n\"\"\"\n```\n<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nBelow is a Python script with a self-contained function that solves the problem and passes corresponding tests:\n```python\n",
+    "ability": "code",
+    "reward_model": {
+      "ground_truth": "\ndef similar_elements(test_tup1, test_tup2):\n  return tuple(set(test_tup1) & set(test_tup2))\n",
+      "style": "code_pass_at_1"
+    },
+    "extra_info": {
+      "split": "test"
+    }
+  },
+  {
+    "data_source": "evalplus/mbpp",
+    "task_id": "Mbpp/3",
+    "entry_point": "is_not_prime",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "Please provide a self-contained Python script that solves the following problem in a markdown code block:\n```\n\"\"\"\nWrite a python function to identify non-prime numbers.\nassert is_not_prime(2) == False\n\"\"\"\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "Below is a Python script with a self-contained function that solves the problem and passes corresponding tests:\n```python\n-[[]]-this-is-really-our-highest-priority-[[]]-\n```\n"
+      }
+    ],
+    "raw_task_prompt": "\"\"\"\nWrite a python function to identify non-prime numbers.\nassert is_not_prime(2) == False\n\"\"\"\n",
+    "rendered_prompt_to_llm": "<|im_start|>user\nPlease provide a self-contained Python script that solves the following problem in a markdown code block:\n```\n\"\"\"\nWrite a python function to identify non-prime numbers.\nassert is_not_prime(2) == False\n\"\"\"\n```\n<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nBelow is a Python script with a self-contained function that solves the problem and passes corresponding tests:\n```python\n",
+    "ability": "code",
+    "reward_model": {
+      "ground_truth": "\nimport math\ndef is_not_prime(n):\n    if n == 1:\n        return True\n    for i in range(2, int(math.sqrt(n))+1):\n        if n % i == 0:\n            return True\n    return False\n",
+      "style": "code_pass_at_1"
+    },
+    "extra_info": {
+      "split": "test"
+    }
+  }
+]

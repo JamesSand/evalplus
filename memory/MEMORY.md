@@ -1,0 +1,1 @@
+- [Local evalplus patches for max_new_tokens / max_model_len](project_evalplus_patches.md) — vllm provider has been edited locally to expose long-context flags

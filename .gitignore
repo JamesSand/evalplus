@@ -180,3 +180,5 @@ trash-bin
 .bak
 evalplus.github.io
 evalplus_results/
+
+!001-init-test/evalplus_prompt_samples.json

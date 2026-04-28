@@ -142,6 +142,8 @@ def run_codegen(
     dtype: str = "bfloat16",
     gptqmodel_backend: str = "auto",  # For GPTQModel
     gguf_file: Optional[str] = None,
+    max_new_tokens: int = 768,
+    max_model_len: int = 2048,
     **kwargs,
 ):
     assert dataset in ["humaneval", "mbpp", "evalperf"], f"Invalid dataset {dataset}"
@@ -253,6 +255,8 @@ def run_codegen(
         dtype=dtype,
         gptqmodel_backend=gptqmodel_backend,
         gguf_file=gguf_file,
+        max_new_tokens=max_new_tokens,
+        max_model_len=max_model_len,
         **kwargs,
     )
 

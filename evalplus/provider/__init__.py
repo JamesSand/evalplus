@@ -20,6 +20,7 @@ def make_model(
     tp=1,
     enable_prefix_caching=False,
     enable_chunked_prefill=False,
+    max_model_len: int = 2048,
     # openai and ollama only
     base_url=None,
     verify_certificate=True,
@@ -31,6 +32,8 @@ def make_model(
     # gptqmodel only
     gptqmodel_backend: str = "auto",
     gguf_file: str = None,
+    # generation
+    max_new_tokens: int = 768,
     **kwargs,
 ) -> DecoderBase:
     if backend == "vllm":
@@ -40,6 +43,7 @@ def make_model(
             name=model,
             batch_size=batch_size,
             temperature=temperature,
+            max_new_tokens=max_new_tokens,
             dataset=dataset,
             force_base_prompt=force_base_prompt,
             tensor_parallel_size=tp,
@@ -48,6 +52,7 @@ def make_model(
             trust_remote_code=trust_remote_code,
             enable_prefix_caching=enable_prefix_caching,
             enable_chunked_prefill=enable_chunked_prefill,
+            max_model_len=max_model_len,
             dtype=dtype,
             gguf_file=gguf_file,
         )
